@@ -20,11 +20,9 @@ phases:
       - echo "$DOCKER_REGISTRY_PASSWORD" | docker login -u "$DOCKER_REGISTRY_USERNAME" --password-stdin "$DOCKER_REGISTRY_URL"
       - docker build -t "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/applicationss:latest" .
       - docker push "$DOCKER_REGISTRY_URL/$DOCKER_REGISTRY_USERNAME/applicationss:latest"
-      nandankrishnanaru/applicationss:tagname
   post_build:
     commands:
       - echo "Build completed successfully!"
 artifacts:
   files:
     - '**/*'
-  base-directory: ../simple-python-app
